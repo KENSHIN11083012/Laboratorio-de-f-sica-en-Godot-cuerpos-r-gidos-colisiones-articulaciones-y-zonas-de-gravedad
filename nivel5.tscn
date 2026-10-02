@@ -1,0 +1,200 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="Texture2D" path="res://arte/cuadricula.svg" id="1_rnkgy"]
+[ext_resource type="Texture2D" path="res://arte/caja.svg" id="2_pjum5"]
+[ext_resource type="Texture2D" path="res://arte/bola.svg" id="3_0b8uo"]
+[ext_resource type="Script" path="res://cuerda.gd" id="4_836e5"]
+[ext_resource type="Script" path="res://zona_antigravedad.gd" id="5_0u6h4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iuin2"]
+size = Vector2(1000, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4pofu"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8s0ms"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y2i3a"]
+radius = 26.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cqron"]
+size = Vector2(160, 300)
+
+[node name="Laboratorio" type="Node2D"]
+
+[node name="Fondo" type="TextureRect" parent="."]
+z_index = -100
+offset_left = -1102.0
+offset_top = -700.0
+offset_right = 2226.0
+offset_bottom = 1604.0
+mouse_filter = 2
+texture = ExtResource("1_rnkgy")
+stretch_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Titulo" type="Label" parent="HUD"]
+offset_left = 20.0
+offset_top = 12.0
+offset_right = 20.0
+offset_bottom = 12.0
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0.85882354, 0.9019608, 1, 1)
+theme_override_colors/font_outline_color = Color(0.043137256, 0.0627451, 0.13333334, 1)
+theme_override_constants/outline_size = 6
+text = "Nivel 5 · Cámara y zona de gravedad"
+
+[node name="Detalle" type="Label" parent="HUD"]
+offset_left = 20.0
+offset_top = 44.0
+offset_right = 20.0
+offset_bottom = 44.0
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.56078434, 0.6509804, 0.84705883, 1)
+theme_override_colors/font_outline_color = Color(0.043137256, 0.0627451, 0.13333334, 1)
+theme_override_constants/outline_size = 6
+text = "Equipo Dynamite  ·  Dentro de la zona verde la gravedad cambia"
+
+[node name="Piso" type="StaticBody2D" parent="."]
+position = Vector2(576, 600)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piso"]
+shape = SubResource("RectangleShape2D_iuin2")
+
+[node name="ColorRect" type="ColorRect" parent="Piso"]
+offset_left = -500.0
+offset_top = -20.0
+offset_right = 500.0
+offset_bottom = 20.0
+color = Color(0.2, 0.25490198, 0.37254903, 1)
+
+[node name="Borde" type="ColorRect" parent="Piso"]
+offset_left = -500.0
+offset_top = -20.0
+offset_right = 500.0
+offset_bottom = -15.0
+color = Color(0.49803922, 0.63529414, 1, 1)
+
+[node name="Caja" type="RigidBody2D" parent="."]
+position = Vector2(850, 548)
+
+[node name="Sprite2D" type="Sprite2D" parent="Caja"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_pjum5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caja"]
+shape = SubResource("RectangleShape2D_4pofu")
+
+[node name="Caja2" type="RigidBody2D" parent="."]
+position = Vector2(850, 484)
+
+[node name="Sprite2D" type="Sprite2D" parent="Caja2"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_pjum5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caja2"]
+shape = SubResource("RectangleShape2D_4pofu")
+
+[node name="Caja3" type="RigidBody2D" parent="."]
+position = Vector2(850, 420)
+
+[node name="Sprite2D" type="Sprite2D" parent="Caja3"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_pjum5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caja3"]
+shape = SubResource("RectangleShape2D_4pofu")
+
+[node name="Caja4" type="RigidBody2D" parent="."]
+position = Vector2(850, 356)
+
+[node name="Sprite2D" type="Sprite2D" parent="Caja4"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_pjum5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caja4"]
+shape = SubResource("RectangleShape2D_4pofu")
+
+[node name="Caja5" type="RigidBody2D" parent="."]
+position = Vector2(850, 292)
+
+[node name="Sprite2D" type="Sprite2D" parent="Caja5"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_pjum5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caja5"]
+shape = SubResource("RectangleShape2D_4pofu")
+
+[node name="Ancla" type="StaticBody2D" parent="."]
+position = Vector2(620, 100)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ancla"]
+shape = SubResource("RectangleShape2D_8s0ms")
+
+[node name="ColorRect" type="ColorRect" parent="Ancla"]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+color = Color(0.8901961, 0.9137255, 0.96862745, 1)
+
+[node name="Peso" type="RigidBody2D" parent="."]
+position = Vector2(320, 100)
+mass = 5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Peso"]
+modulate = Color(1, 0.72, 0.2, 1)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_0b8uo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Peso"]
+shape = SubResource("CircleShape2D_y2i3a")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(620, 100)
+node_a = NodePath("../Ancla")
+node_b = NodePath("../Peso")
+
+[node name="Cuerda" type="Line2D" parent="."]
+z_index = -1
+points = PackedVector2Array(620, 100, 320, 100)
+width = 5.0
+default_color = Color(0.7882353, 0.827451, 0.91764706, 1)
+script = ExtResource("4_836e5")
+desde = NodePath("../Ancla")
+hasta = NodePath("../Peso")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+zoom = Vector2(0.8, 0.8)
+
+[node name="ZonaAntigravedad" type="Area2D" parent="."]
+position = Vector2(990, 400)
+gravity_space_override = 1
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+gravity = 1500.0
+script = ExtResource("5_0u6h4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaAntigravedad"]
+shape = SubResource("RectangleShape2D_cqron")
+
+[node name="ColorRect" type="ColorRect" parent="ZonaAntigravedad"]
+offset_left = -80.0
+offset_top = -150.0
+offset_right = 80.0
+offset_bottom = 150.0
+color = Color(0.35, 1, 0.6, 0.3)
+
+[node name="CajaFlotante" type="RigidBody2D" parent="."]
+position = Vector2(990, 320)
+
+[node name="Sprite2D" type="Sprite2D" parent="CajaFlotante"]
+modulate = Color(0.7, 1, 0.8, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_pjum5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CajaFlotante"]
+shape = SubResource("RectangleShape2D_4pofu")

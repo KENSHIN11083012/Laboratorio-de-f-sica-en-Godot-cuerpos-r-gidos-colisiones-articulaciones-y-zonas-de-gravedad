@@ -1,0 +1,141 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Texture2D" path="res://arte/cuadricula.svg" id="1_c8lfl"]
+[ext_resource type="Texture2D" path="res://arte/caja.svg" id="2_rxp8s"]
+[ext_resource type="Script" path="res://bola.gd" id="3_kngd7"]
+[ext_resource type="Texture2D" path="res://arte/bola.svg" id="4_q5c4a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5pwig"]
+size = Vector2(1000, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nunmj"]
+size = Vector2(64, 64)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ewg5u"]
+bounce = 0.6
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wkaaa"]
+radius = 32.0
+
+[node name="Laboratorio" type="Node2D"]
+
+[node name="Fondo" type="TextureRect" parent="."]
+z_index = -100
+offset_left = -1102.0
+offset_top = -700.0
+offset_right = 2226.0
+offset_bottom = 1604.0
+mouse_filter = 2
+texture = ExtResource("1_c8lfl")
+stretch_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Titulo" type="Label" parent="HUD"]
+offset_left = 20.0
+offset_top = 12.0
+offset_right = 20.0
+offset_bottom = 12.0
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0.85882354, 0.9019608, 1, 1)
+theme_override_colors/font_outline_color = Color(0.043137256, 0.0627451, 0.13333334, 1)
+theme_override_constants/outline_size = 6
+text = "Laboratorio de física · Niveles 1 a 3"
+
+[node name="Detalle" type="Label" parent="HUD"]
+offset_left = 20.0
+offset_top = 44.0
+offset_right = 20.0
+offset_bottom = 44.0
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.56078434, 0.6509804, 0.84705883, 1)
+theme_override_colors/font_outline_color = Color(0.043137256, 0.0627451, 0.13333334, 1)
+theme_override_constants/outline_size = 6
+text = "Equipo Dynamite  ·  Espacio o Enter aplica un impulso a la bola"
+
+[node name="Piso" type="StaticBody2D" parent="."]
+position = Vector2(576, 600)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piso"]
+shape = SubResource("RectangleShape2D_5pwig")
+
+[node name="ColorRect" type="ColorRect" parent="Piso"]
+offset_left = -500.0
+offset_top = -20.0
+offset_right = 500.0
+offset_bottom = 20.0
+color = Color(0.2, 0.25490198, 0.37254903, 1)
+
+[node name="Borde" type="ColorRect" parent="Piso"]
+offset_left = -500.0
+offset_top = -20.0
+offset_right = 500.0
+offset_bottom = -15.0
+color = Color(0.49803922, 0.63529414, 1, 1)
+
+[node name="Caja" type="RigidBody2D" parent="."]
+position = Vector2(850, 548)
+
+[node name="Sprite2D" type="Sprite2D" parent="Caja"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_rxp8s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caja"]
+shape = SubResource("RectangleShape2D_nunmj")
+
+[node name="Caja2" type="RigidBody2D" parent="."]
+position = Vector2(850, 484)
+
+[node name="Sprite2D" type="Sprite2D" parent="Caja2"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_rxp8s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caja2"]
+shape = SubResource("RectangleShape2D_nunmj")
+
+[node name="Caja3" type="RigidBody2D" parent="."]
+position = Vector2(850, 420)
+
+[node name="Sprite2D" type="Sprite2D" parent="Caja3"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_rxp8s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caja3"]
+shape = SubResource("RectangleShape2D_nunmj")
+
+[node name="Caja4" type="RigidBody2D" parent="."]
+position = Vector2(850, 356)
+
+[node name="Sprite2D" type="Sprite2D" parent="Caja4"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_rxp8s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caja4"]
+shape = SubResource("RectangleShape2D_nunmj")
+
+[node name="Caja5" type="RigidBody2D" parent="."]
+position = Vector2(850, 292)
+
+[node name="Sprite2D" type="Sprite2D" parent="Caja5"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_rxp8s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caja5"]
+shape = SubResource("RectangleShape2D_nunmj")
+
+[node name="Bola" type="RigidBody2D" parent="."]
+position = Vector2(150, 400)
+mass = 3.0
+physics_material_override = SubResource("PhysicsMaterial_ewg5u")
+continuous_cd = 1
+linear_velocity = Vector2(900, -400)
+script = ExtResource("3_kngd7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bola"]
+modulate = Color(1, 0.3, 0.3, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_q5c4a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bola"]
+shape = SubResource("CircleShape2D_wkaaa")

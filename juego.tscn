@@ -1,0 +1,382 @@
+[gd_scene load_steps=20 format=3]
+
+[ext_resource type="Script" path="res://juego.gd" id="1_ipdbw"]
+[ext_resource type="Texture2D" path="res://arte/lanzador.svg" id="2_xbmtn"]
+[ext_resource type="Texture2D" path="res://arte/caja.svg" id="3_6v0qg"]
+[ext_resource type="Texture2D" path="res://arte/bomba.svg" id="4_cpk6b"]
+
+[sub_resource type="Gradient" id="Gradient_icdfu"]
+offsets = PackedFloat32Array(0, 1, 0.45, 0.75)
+colors = PackedColorArray(0.05490196, 0.0627451, 0.1882353, 1, 1, 0.6901961, 0.4, 1, 0.2901961, 0.14117648, 0.3882353, 1, 0.78431374, 0.3137255, 0.41568628, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l4niy"]
+gradient = SubResource("Gradient_icdfu")
+height = 256
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_ybvdj"]
+offsets = PackedFloat32Array(0, 0.22, 0.26, 1)
+colors = PackedColorArray(1, 0.97, 0.8, 1, 1, 0.85, 0.5, 1, 1, 0.6, 0.35, 0.45, 1, 0.5, 0.3, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8gqk3"]
+gradient = SubResource("Gradient_ybvdj")
+width = 512
+height = 512
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1hvq"]
+size = Vector2(1000, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5wy4"]
+size = Vector2(64, 64)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_owdwa"]
+radius = 24.0
+
+[sub_resource type="Gradient" id="Gradient_ycwqe"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 1, 0.7, 1, 1, 0.6, 0.1, 1, 1, 0.3, 0, 0)
+
+[sub_resource type="Gradient" id="Gradient_t4mpn"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.55, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_c3jwe"]
+gradient = SubResource("Gradient_t4mpn")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_tec1s"]
+offsets = PackedFloat32Array(0, 0.4, 1)
+colors = PackedColorArray(0.28, 0.22, 0.26, 0.85, 0.36, 0.32, 0.36, 0.55, 0.45, 0.42, 0.45, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1voko"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_l1aui"]
+offsets = PackedFloat32Array(0, 0.3, 1)
+colors = PackedColorArray(1, 1, 0.85, 1, 1, 0.62, 0.12, 1, 0.7, 0.1, 0, 0)
+
+[sub_resource type="Gradient" id="Gradient_o6x6o"]
+offsets = PackedFloat32Array(0, 0.35, 1)
+colors = PackedColorArray(1, 1, 0.92, 1, 1, 0.8, 0.35, 0.7, 1, 0.5, 0.1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_44kbx"]
+gradient = SubResource("Gradient_o6x6o")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="Juego" type="Node2D"]
+script = ExtResource("1_ipdbw")
+
+[node name="Cielo" type="TextureRect" parent="."]
+z_index = -10
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 1252.0
+offset_bottom = 748.0
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_l4niy")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Sol" type="Sprite2D" parent="."]
+z_index = -9
+position = Vector2(930, 500)
+texture = SubResource("GradientTexture2D_8gqk3")
+
+[node name="ColinasLejos" type="Polygon2D" parent="."]
+z_index = -8
+color = Color(0.3529412, 0.16470589, 0.36862746, 1)
+polygon = PackedVector2Array(-150, 800, -150, 551.39233, -119.75, 540.69977, -89.5, 526.28723, -59.25, 509.52316, -29, 492.20502, 1.25, 476.2805, 31.5, 463.53986, 61.75, 455.33377, 92, 452.36426, 122.25, 454.5859, 152.5, 461.23328, 182.75, 470.96936, 213, 482.1281, 243.25, 493.0081, 273.5, 502.16473, 303.75, 508.6503, 334, 512.15906, 364.25, 513.0526, 394.5, 512.26276, 424.75, 511.0886, 455, 510.92722, 485.25, 512.985, 515.5, 518.02386, 545.75, 526.1876, 576, 536.94135, 606.25, 549.13525, 636.5, 561.1829, 666.75, 571.3232, 697, 577.9198, 727.25, 579.7464, 757.5, 576.2059, 787.75, 567.44543, 818, 554.3472, 848.25, 538.39417, 878.5, 521.4358, 908.75, 505.39304, 939, 491.95468, 969.25, 482.31674, 999.5, 477.01074, 1029.75, 475.84937, 1060, 477.99808, 1090.25, 482.15848, 1120.5, 486.8298, 1150.75, 490.60117, 1181, 492.42163, 1211.25, 491.79965, 1241.5, 488.896, 1271.75, 484.4935, 1302, 479.84912, 1302, 800)
+
+[node name="ColinasCerca" type="Polygon2D" parent="."]
+z_index = -7
+color = Color(0.20392157, 0.101960786, 0.24705882, 1)
+polygon = PackedVector2Array(-150, 800, -150, 558.11127, -119.75, 544.2198, -89.5, 531.83234, -59.25, 525.4986, -29, 528.2173, 1.25, 540.189, 31.5, 558.6333, 61.75, 578.7504, 92, 595.45337, 122.25, 605.1842, 152.5, 607.102, 182.75, 603.179, 213, 597.1878, 243.25, 593.0037, 273.5, 592.92456, 303.75, 596.6934, 334, 601.6256, 364.25, 603.78516, 394.5, 599.7286, 424.75, 588.09937, 455, 570.41156, 485.25, 550.6886, 515.5, 534.0824, 545.75, 525.01276, 576, 525.5604, 606.25, 534.75116, 636.5, 549.0083, 666.75, 563.5881, 697, 574.417, 727.25, 579.5956, 757.5, 579.9714, 787.75, 578.565, 818, 579.09973, 848.25, 584.24817, 878.5, 594.32465, 908.75, 606.9699, 939, 617.97003, 969.25, 622.88934, 999.5, 618.86273, 1029.75, 605.8229, 1060, 586.6606, 1090.25, 566.2435, 1120.5, 549.6746, 1150.75, 540.4769, 1181, 539.4188, 1211.25, 544.43567, 1241.5, 551.66016, 1271.75, 557.1304, 1302, 558.47345, 1302, 800)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="Piso" type="StaticBody2D" parent="."]
+position = Vector2(576, 600)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piso"]
+shape = SubResource("RectangleShape2D_b1hvq")
+
+[node name="ColorRect" type="ColorRect" parent="Piso"]
+offset_left = -500.0
+offset_top = -20.0
+offset_right = 500.0
+offset_bottom = 20.0
+mouse_filter = 2
+color = Color(0.12941177, 0.078431375, 0.05882353, 1)
+
+[node name="Pasto" type="ColorRect" parent="Piso"]
+offset_left = -500.0
+offset_top = -20.0
+offset_right = 500.0
+offset_bottom = -13.0
+mouse_filter = 2
+color = Color(0.47843137, 0.6039216, 0.23529412, 1)
+
+[node name="Lanzador" type="Sprite2D" parent="."]
+position = Vector2(170, 507)
+texture = ExtResource("2_xbmtn")
+
+[node name="Caja1" type="RigidBody2D" parent="." groups=["cajas"]]
+position = Vector2(760, 548)
+
+[node name="Sprite2D" type="Sprite2D" parent="Caja1"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_6v0qg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caja1"]
+shape = SubResource("RectangleShape2D_v5wy4")
+
+[node name="Caja2" type="RigidBody2D" parent="." groups=["cajas"]]
+position = Vector2(760, 484)
+
+[node name="Sprite2D" type="Sprite2D" parent="Caja2"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_6v0qg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caja2"]
+shape = SubResource("RectangleShape2D_v5wy4")
+
+[node name="Caja3" type="RigidBody2D" parent="." groups=["cajas"]]
+position = Vector2(760, 420)
+
+[node name="Sprite2D" type="Sprite2D" parent="Caja3"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_6v0qg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caja3"]
+shape = SubResource("RectangleShape2D_v5wy4")
+
+[node name="Caja4" type="RigidBody2D" parent="." groups=["cajas"]]
+position = Vector2(760, 356)
+
+[node name="Sprite2D" type="Sprite2D" parent="Caja4"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_6v0qg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caja4"]
+shape = SubResource("RectangleShape2D_v5wy4")
+
+[node name="Caja5" type="RigidBody2D" parent="." groups=["cajas"]]
+position = Vector2(860, 548)
+
+[node name="Sprite2D" type="Sprite2D" parent="Caja5"]
+modulate = Color(1, 0.8, 0.72, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_6v0qg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caja5"]
+shape = SubResource("RectangleShape2D_v5wy4")
+
+[node name="Caja6" type="RigidBody2D" parent="." groups=["cajas"]]
+position = Vector2(860, 484)
+
+[node name="Sprite2D" type="Sprite2D" parent="Caja6"]
+modulate = Color(1, 0.8, 0.72, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_6v0qg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caja6"]
+shape = SubResource("RectangleShape2D_v5wy4")
+
+[node name="Caja7" type="RigidBody2D" parent="." groups=["cajas"]]
+position = Vector2(860, 420)
+
+[node name="Sprite2D" type="Sprite2D" parent="Caja7"]
+modulate = Color(1, 0.8, 0.72, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_6v0qg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caja7"]
+shape = SubResource("RectangleShape2D_v5wy4")
+
+[node name="Caja8" type="RigidBody2D" parent="." groups=["cajas"]]
+position = Vector2(960, 548)
+
+[node name="Sprite2D" type="Sprite2D" parent="Caja8"]
+modulate = Color(0.82, 0.92, 1, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_6v0qg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caja8"]
+shape = SubResource("RectangleShape2D_v5wy4")
+
+[node name="Caja9" type="RigidBody2D" parent="." groups=["cajas"]]
+position = Vector2(960, 484)
+
+[node name="Sprite2D" type="Sprite2D" parent="Caja9"]
+modulate = Color(0.82, 0.92, 1, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_6v0qg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caja9"]
+shape = SubResource("RectangleShape2D_v5wy4")
+
+[node name="Bomba" type="RigidBody2D" parent="."]
+position = Vector2(170, 440)
+mass = 2.0
+freeze = true
+continuous_cd = 1
+contact_monitor = true
+max_contacts_reported = 4
+linear_damp_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Bomba"]
+position = Vector2(0, -6)
+texture = ExtResource("4_cpk6b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bomba"]
+shape = SubResource("CircleShape2D_owdwa")
+disabled = true
+
+[node name="Chispa" type="CPUParticles2D" parent="Bomba"]
+position = Vector2(25, -33)
+amount = 14
+lifetime = 0.4
+spread = 180.0
+gravity = Vector2(0, 220)
+initial_velocity_min = 20.0
+initial_velocity_max = 70.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+color_ramp = SubResource("Gradient_ycwqe")
+
+[node name="Humo" type="CPUParticles2D" parent="."]
+z_index = 4
+emitting = false
+amount = 26
+texture = SubResource("GradientTexture2D_c3jwe")
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.92
+spread = 180.0
+gravity = Vector2(0, -70)
+initial_velocity_min = 40.0
+initial_velocity_max = 170.0
+damping_min = 60.0
+damping_max = 110.0
+scale_amount_min = 0.7
+scale_amount_max = 1.9
+color_ramp = SubResource("Gradient_tec1s")
+
+[node name="Explosion" type="CPUParticles2D" parent="."]
+z_index = 5
+material = SubResource("CanvasItemMaterial_1voko")
+emitting = false
+amount = 110
+texture = SubResource("GradientTexture2D_c3jwe")
+lifetime = 0.8
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 520)
+initial_velocity_min = 140.0
+initial_velocity_max = 600.0
+scale_amount_min = 0.15
+scale_amount_max = 0.55
+color_ramp = SubResource("Gradient_l1aui")
+
+[node name="Destello" type="Sprite2D" parent="."]
+visible = false
+z_index = 6
+material = SubResource("CanvasItemMaterial_1voko")
+texture = SubResource("GradientTexture2D_44kbx")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Franja" type="ColorRect" parent="UI"]
+offset_right = 1152.0
+offset_bottom = 78.0
+mouse_filter = 2
+color = Color(0.03, 0.02, 0.1, 0.5)
+
+[node name="Titulo" type="Label" parent="UI"]
+offset_left = 24.0
+offset_top = 12.0
+offset_right = 24.0
+offset_bottom = 12.0
+theme_override_font_sizes/font_size = 38
+theme_override_colors/font_color = Color(1, 0.6901961, 0.22745098, 1)
+theme_override_colors/font_outline_color = Color(0.101960786, 0.050980393, 0.14117648, 1)
+theme_override_constants/outline_size = 10
+text = "DYNAMITE"
+
+[node name="Marcador" type="Label" parent="UI"]
+offset_left = 330.0
+offset_top = 22.0
+offset_right = 330.0
+offset_bottom = 22.0
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.101960786, 0.050980393, 0.14117648, 1)
+theme_override_constants/outline_size = 6
+text = "Cajas  0 / 9"
+
+[node name="Bombas" type="HBoxContainer" parent="UI"]
+offset_left = 560.0
+offset_top = 14.0
+offset_right = 560.0
+offset_bottom = 14.0
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="Bomba1" type="TextureRect" parent="UI/Bombas"]
+custom_minimum_size = Vector2(46, 46)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("4_cpk6b")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Bomba2" type="TextureRect" parent="UI/Bombas"]
+custom_minimum_size = Vector2(46, 46)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("4_cpk6b")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Bomba3" type="TextureRect" parent="UI/Bombas"]
+custom_minimum_size = Vector2(46, 46)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("4_cpk6b")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Mensaje" type="Label" parent="UI"]
+offset_left = 24.0
+offset_top = 92.0
+offset_right = 24.0
+offset_bottom = 92.0
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 0.9019608, 0.65882355, 1)
+theme_override_colors/font_outline_color = Color(0.101960786, 0.050980393, 0.14117648, 1)
+theme_override_constants/outline_size = 6
+text = "Arrastra la bomba hacia atrás y suelta para lanzarla  ·  R reinicia"
+
+[node name="Final" type="Label" parent="UI"]
+visible = false
+offset_top = 230.0
+offset_right = 1152.0
+offset_bottom = 380.0
+pivot_offset = Vector2(576, 75)
+theme_override_font_sizes/font_size = 46
+theme_override_colors/font_color = Color(1, 0.8235294, 0.24705882, 1)
+theme_override_colors/font_outline_color = Color(0.101960786, 0.050980393, 0.14117648, 1)
+theme_override_constants/outline_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1

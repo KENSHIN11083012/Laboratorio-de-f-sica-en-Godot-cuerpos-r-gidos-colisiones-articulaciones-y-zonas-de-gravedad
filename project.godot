@@ -1,0 +1,25 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Fisica_GrupoDynamite"
+run/main_scene="res://laboratorio.tscn"
+config/features=PackedStringArray("4.5", "Forward Plus")
+boot_splash/bg_color=Color(0.059, 0.094, 0.188, 1)
+config/icon="res://icon.svg"
+
+[debug]
+
+shapes/collision/shape_color=Color(0.3, 0.9, 1, 0.1)
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.059, 0.094, 0.188, 1)
